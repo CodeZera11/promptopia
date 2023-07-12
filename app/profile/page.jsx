@@ -2,7 +2,7 @@
 
 import {useState, useEffect} from 'react';
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Profile from '@components/Profile';
 
 
@@ -11,12 +11,30 @@ const MyProfile = () => {
     const [posts, setPosts] = useState([]);
     const {data: session} = useSession();
 
-    const handleDelete = () => {
-        
+    const router = useRouter()
+
+    const handleEdit = (post) => {
+        router.push(`/update-prompt?id=${post._id}`)
     }
 
-    const handleEdit = () => {
+    const  handleDelete = async (post) => {
 
+        const hasConfirmed = confirm(
+            "Are you sure you want to delete this prompt?"
+        );
+
+        if(hasConfirmed) {
+            try {
+                await fetch(`/api/update-prompt/${post._id.toString()}`, {
+                    method: "DELETE",
+                })
+
+                const filteredPosts = posts.filter((item) => item._id !== post._id);
+                setPosts(filteredPosts)
+            } catch (error) {
+                console.log(error)
+            }
+        }
     }
 
     useEffect(()=>{
