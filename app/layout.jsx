@@ -3,8 +3,11 @@ import Nav from '@components/Nav';
 import Provider from '@components/Provider';
 
 export const metadata = {
-    title: 'Promptopia',
-    description: 'Discover & Share AI Prompts'
+    title: 'PromptHaven',
+    description: 'Share your AI prompts',
+    icons: {
+        icon: '/assets/images/newlogo.png',
+    },
 }
 
 const RootLayout = ({children}) => {
@@ -13,7 +16,7 @@ const RootLayout = ({children}) => {
         <body>
             <Provider>
                 <div className='main'>
-                    <div className='gradient'/>
+                    <div className='black__bg'/>
                 </div>
                 <main className='app'>
                     <Nav />

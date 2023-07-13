@@ -33,7 +33,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       
 
       <div className="flex flex-col">
-        <h3 className="font-satoshi font-semibold text-gray-900">
+        <h3 className="font-satoshi font-semibold text-gray-300">
           {post.creator.username}
         </h3>
         <p className="font-inter text-sm text-gray-500">
@@ -44,8 +44,8 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           <div className="copy_btn" onClick={handleCopy}>
             <Image  src={copied === post.prompt ? "/assets/icons/tick.svg" : "/assets/icons/copy.svg"} 
                     alt= "copy"
-                    width={12}
-                    height={12}
+                    width={20}
+                    height={20}
             />
           </div>
           </div>
